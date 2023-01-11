@@ -14,20 +14,20 @@ Method | HTTP request | Description
 [**admin_get_access_rule_versions**](#admin_get_access_rule_versions) | **get** /api/v1/admin/access-rules/{ruleId}/versions | Get Access Rule version history
 [**admin_get_deployment_version**](#admin_get_deployment_version) | **get** /api/v1/admin/deployment/version | Get deployment version details
 [**admin_get_group**](#admin_get_group) | **get** /api/v1/admin/groups/{groupId} | Get Group Details
+[**admin_get_identity_configuration**](#admin_get_identity_configuration) | **get** /api/v1/admin/identity | Get identity configuration
 [**admin_get_provider**](#admin_get_provider) | **get** /api/v1/admin/providers/{providerId} | List providers
 [**admin_get_provider_args**](#admin_get_provider_args) | **get** /api/v1/admin/providers/{providerId}/args | Get provider arg schema
 [**admin_get_providersetup**](#admin_get_providersetup) | **get** /api/v1/admin/providersetups/{providersetupId} | Get an in-progress provider setup
 [**admin_get_providersetup_instructions**](#admin_get_providersetup_instructions) | **get** /api/v1/admin/providersetups/{providersetupId}/instructions | Get the setup instructions for an Access Provider
-[**admin_get_users**](#admin_get_users) | **get** /api/v1/admin/users | Returns a list of users
-[**admin_identity_configuration**](#admin_identity_configuration) | **get** /api/v1/admin/identity | Get identity configuration
-[**admin_identity_sync**](#admin_identity_sync) | **post** /api/v1/admin/identity/sync | Sync Identity
 [**admin_list_access_rules**](#admin_list_access_rules) | **get** /api/v1/admin/access-rules | List Access Rules
 [**admin_list_groups**](#admin_list_groups) | **get** /api/v1/admin/groups | List groups
 [**admin_list_provider_arg_options**](#admin_list_provider_arg_options) | **get** /api/v1/admin/providers/{providerId}/args/{argId}/options | List provider arg options
 [**admin_list_providers**](#admin_list_providers) | **get** /api/v1/admin/providers | List providers
 [**admin_list_providersetups**](#admin_list_providersetups) | **get** /api/v1/admin/providersetups | List the provider setups in progress
 [**admin_list_requests**](#admin_list_requests) | **get** /api/v1/admin/requests | Your GET endpoint
+[**admin_list_users**](#admin_list_users) | **get** /api/v1/admin/users | Returns a list of users
 [**admin_submit_providersetup_step**](#admin_submit_providersetup_step) | **put** /api/v1/admin/providersetups/{providersetupId}/steps/{stepIndex}/complete | Update the completion status for a Provider setup step
+[**admin_sync_identity**](#admin_sync_identity) | **post** /api/v1/admin/identity/sync | Sync Identity
 [**admin_update_access_rule**](#admin_update_access_rule) | **put** /api/v1/admin/access-rules/{ruleId} | Update Access Rule
 [**admin_update_group**](#admin_update_group) | **put** /api/v1/admin/groups/{groupId} | Update Group
 [**admin_update_user**](#admin_update_user) | **post** /api/v1/admin/users/{userId} | Update User
@@ -1195,6 +1195,118 @@ No authorization required
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
+# **admin_get_identity_configuration**
+<a name="admin_get_identity_configuration"></a>
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} admin_get_identity_configuration()
+
+Get identity configuration
+
+Get information about the identity configuration
+
+### Example
+
+```python
+import commonfate
+from commonfate.apis.tags import admin_api
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = commonfate.Configuration(
+    host = "http://localhost:8080"
+)
+
+# Enter a context with an instance of the API client
+with commonfate.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = admin_api.AdminApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Get identity configuration
+        api_response = api_instance.admin_get_identity_configuration()
+        pprint(api_response)
+    except commonfate.ApiException as e:
+        print("Exception when calling AdminApi->admin_get_identity_configuration: %s\n" % e)
+```
+### Parameters
+This endpoint does not need any parameter.
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#admin_get_identity_configuration.ApiResponseFor200) | Returns information about the identity configuration of this deployment.
+401 | [ApiResponseFor401](#admin_get_identity_configuration.ApiResponseFor401) | An error returned from the service.
+500 | [ApiResponseFor500](#admin_get_identity_configuration.ApiResponseFor500) | An error returned from the service.
+
+#### admin_get_identity_configuration.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor200ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**administratorGroupId** | str,  | str,  |  | 
+**identityProvider** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+#### admin_get_identity_configuration.ApiResponseFor401
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor401ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor401ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+#### admin_get_identity_configuration.ApiResponseFor500
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor500ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+### Authorization
+
+No authorization required
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
 # **admin_get_provider**
 <a name="admin_get_provider"></a>
 > Provider admin_get_provider(provider_id)
@@ -1628,325 +1740,6 @@ Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ProviderSetupInstructions**](../../models/ProviderSetupInstructions.md) |  | 
 
-
-### Authorization
-
-No authorization required
-
-[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
-
-# **admin_get_users**
-<a name="admin_get_users"></a>
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} admin_get_users()
-
-Returns a list of users
-
-Fetch a list of users
-
-### Example
-
-```python
-import commonfate
-from commonfate.apis.tags import admin_api
-from commonfate.model.user import User
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
-# See configuration.py for a list of all supported configuration parameters.
-configuration = commonfate.Configuration(
-    host = "http://localhost:8080"
-)
-
-# Enter a context with an instance of the API client
-with commonfate.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = admin_api.AdminApi(api_client)
-
-    # example passing only optional values
-    query_params = {
-        'nextToken': "nextToken_example",
-    }
-    try:
-        # Returns a list of users
-        api_response = api_instance.admin_get_users(
-            query_params=query_params,
-        )
-        pprint(api_response)
-    except commonfate.ApiException as e:
-        print("Exception when calling AdminApi->admin_get_users: %s\n" % e)
-```
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-query_params | RequestQueryParams | |
-accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
-stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
-timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
-skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
-
-### query_params
-#### RequestQueryParams
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-nextToken | NextTokenSchema | | optional
-
-
-# NextTokenSchema
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-str,  | str,  |  | 
-
-### Return Types, Responses
-
-Code | Class | Description
-------------- | ------------- | -------------
-n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-200 | [ApiResponseFor200](#admin_get_users.ApiResponseFor200) | Paginated list of users
-
-#### admin_get_users.ApiResponseFor200
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor200ResponseBodyApplicationJson
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**next** | None, str,  | NoneClass, str,  |  | 
-**[users](#users)** | list, tuple,  | tuple,  |  | 
-**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
-
-# users
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-list, tuple,  | tuple,  |  | 
-
-### Tuple Items
-Class Name | Input Type | Accessed Type | Description | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-[**User**]({{complexTypePrefix}}User.md) | [**User**]({{complexTypePrefix}}User.md) | [**User**]({{complexTypePrefix}}User.md) |  | 
-
-### Authorization
-
-No authorization required
-
-[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
-
-# **admin_identity_configuration**
-<a name="admin_identity_configuration"></a>
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} admin_identity_configuration()
-
-Get identity configuration
-
-Get information about the identity configuration
-
-### Example
-
-```python
-import commonfate
-from commonfate.apis.tags import admin_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
-# See configuration.py for a list of all supported configuration parameters.
-configuration = commonfate.Configuration(
-    host = "http://localhost:8080"
-)
-
-# Enter a context with an instance of the API client
-with commonfate.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = admin_api.AdminApi(api_client)
-
-    # example, this endpoint has no required or optional parameters
-    try:
-        # Get identity configuration
-        api_response = api_instance.admin_identity_configuration()
-        pprint(api_response)
-    except commonfate.ApiException as e:
-        print("Exception when calling AdminApi->admin_identity_configuration: %s\n" % e)
-```
-### Parameters
-This endpoint does not need any parameter.
-
-### Return Types, Responses
-
-Code | Class | Description
-------------- | ------------- | -------------
-n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-200 | [ApiResponseFor200](#admin_identity_configuration.ApiResponseFor200) | Returns information about the identity configuration of this deployment.
-401 | [ApiResponseFor401](#admin_identity_configuration.ApiResponseFor401) | An error returned from the service.
-500 | [ApiResponseFor500](#admin_identity_configuration.ApiResponseFor500) | An error returned from the service.
-
-#### admin_identity_configuration.ApiResponseFor200
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor200ResponseBodyApplicationJson
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**administratorGroupId** | str,  | str,  |  | 
-**identityProvider** | str,  | str,  |  | 
-**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
-
-#### admin_identity_configuration.ApiResponseFor401
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor401ResponseBodyApplicationJson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor401ResponseBodyApplicationJson
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**error** | str,  | str,  |  | 
-**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
-
-#### admin_identity_configuration.ApiResponseFor500
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor500ResponseBodyApplicationJson
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**error** | str,  | str,  |  | 
-**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
-
-### Authorization
-
-No authorization required
-
-[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
-
-# **admin_identity_sync**
-<a name="admin_identity_sync"></a>
-> admin_identity_sync()
-
-Sync Identity
-
-Run the identity sync operation on demand
-
-### Example
-
-```python
-import commonfate
-from commonfate.apis.tags import admin_api
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
-# See configuration.py for a list of all supported configuration parameters.
-configuration = commonfate.Configuration(
-    host = "http://localhost:8080"
-)
-
-# Enter a context with an instance of the API client
-with commonfate.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = admin_api.AdminApi(api_client)
-
-    # example, this endpoint has no required or optional parameters
-    try:
-        # Sync Identity
-        api_response = api_instance.admin_identity_sync()
-    except commonfate.ApiException as e:
-        print("Exception when calling AdminApi->admin_identity_sync: %s\n" % e)
-```
-### Parameters
-This endpoint does not need any parameter.
-
-### Return Types, Responses
-
-Code | Class | Description
-------------- | ------------- | -------------
-n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-200 | [ApiResponseFor200](#admin_identity_sync.ApiResponseFor200) | OK
-401 | [ApiResponseFor401](#admin_identity_sync.ApiResponseFor401) | An error returned from the service.
-500 | [ApiResponseFor500](#admin_identity_sync.ApiResponseFor500) | An error returned from the service.
-
-#### admin_identity_sync.ApiResponseFor200
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | Unset | body was not defined |
-headers | Unset | headers were not defined |
-
-#### admin_identity_sync.ApiResponseFor401
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor401ResponseBodyApplicationJson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor401ResponseBodyApplicationJson
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**error** | str,  | str,  |  | 
-**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
-
-#### admin_identity_sync.ApiResponseFor500
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor500ResponseBodyApplicationJson
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**error** | str,  | str,  |  | 
-**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 ### Authorization
 
@@ -2704,6 +2497,116 @@ No authorization required
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
+# **admin_list_users**
+<a name="admin_list_users"></a>
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} admin_list_users()
+
+Returns a list of users
+
+Fetch a list of users
+
+### Example
+
+```python
+import commonfate
+from commonfate.apis.tags import admin_api
+from commonfate.model.user import User
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = commonfate.Configuration(
+    host = "http://localhost:8080"
+)
+
+# Enter a context with an instance of the API client
+with commonfate.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = admin_api.AdminApi(api_client)
+
+    # example passing only optional values
+    query_params = {
+        'nextToken': "nextToken_example",
+    }
+    try:
+        # Returns a list of users
+        api_response = api_instance.admin_list_users(
+            query_params=query_params,
+        )
+        pprint(api_response)
+    except commonfate.ApiException as e:
+        print("Exception when calling AdminApi->admin_list_users: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+query_params | RequestQueryParams | |
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### query_params
+#### RequestQueryParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+nextToken | NextTokenSchema | | optional
+
+
+# NextTokenSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#admin_list_users.ApiResponseFor200) | Paginated list of users
+
+#### admin_list_users.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor200ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**next** | None, str,  | NoneClass, str,  |  | 
+**[users](#users)** | list, tuple,  | tuple,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# users
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+[**User**]({{complexTypePrefix}}User.md) | [**User**]({{complexTypePrefix}}User.md) | [**User**]({{complexTypePrefix}}User.md) |  | 
+
+### Authorization
+
+No authorization required
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
 # **admin_submit_providersetup_step**
 <a name="admin_submit_providersetup_step"></a>
 > ProviderSetup admin_submit_providersetup_step(step_indexprovidersetup_id)
@@ -2848,6 +2751,103 @@ Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ProviderSetup**](../../models/ProviderSetup.md) |  | 
 
+
+### Authorization
+
+No authorization required
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
+# **admin_sync_identity**
+<a name="admin_sync_identity"></a>
+> admin_sync_identity()
+
+Sync Identity
+
+Run the identity sync operation on demand
+
+### Example
+
+```python
+import commonfate
+from commonfate.apis.tags import admin_api
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = commonfate.Configuration(
+    host = "http://localhost:8080"
+)
+
+# Enter a context with an instance of the API client
+with commonfate.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = admin_api.AdminApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Sync Identity
+        api_response = api_instance.admin_sync_identity()
+    except commonfate.ApiException as e:
+        print("Exception when calling AdminApi->admin_sync_identity: %s\n" % e)
+```
+### Parameters
+This endpoint does not need any parameter.
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#admin_sync_identity.ApiResponseFor200) | OK
+401 | [ApiResponseFor401](#admin_sync_identity.ApiResponseFor401) | An error returned from the service.
+500 | [ApiResponseFor500](#admin_sync_identity.ApiResponseFor500) | An error returned from the service.
+
+#### admin_sync_identity.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### admin_sync_identity.ApiResponseFor401
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor401ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor401ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+#### admin_sync_identity.ApiResponseFor500
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor500ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 ### Authorization
 

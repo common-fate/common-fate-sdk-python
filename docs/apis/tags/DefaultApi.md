@@ -9,13 +9,13 @@ Method | HTTP request | Description
 [**admin_create_providersetup**](#admin_create_providersetup) | **post** /api/v1/admin/providersetups | Begin the setup process for a new Access Provider
 [**admin_delete_group**](#admin_delete_group) | **delete** /api/v1/admin/groups/{groupId} | Delete Group
 [**admin_delete_providersetup**](#admin_delete_providersetup) | **delete** /api/v1/admin/providersetups/{providersetupId} | Delete an in-progress provider setup
-[**user_access_rule_lookup**](#user_access_rule_lookup) | **get** /api/v1/access-rules/lookup | Lookup an access rule based on the target
 [**user_create_favorite**](#user_create_favorite) | **post** /api/v1/favorites | Create Favorite
 [**user_delete_favorite**](#user_delete_favorite) | **delete** /api/v1/favorites/{id} | 
 [**user_get_favorite**](#user_get_favorite) | **get** /api/v1/favorites/{id} | Get Favorite
 [**user_list_favorites**](#user_list_favorites) | **get** /api/v1/favorites | ListFavorites
 [**user_list_requests_past**](#user_list_requests_past) | **get** /api/v1/requests/past | Your GET endpoint
 [**user_list_requests_upcoming**](#user_list_requests_upcoming) | **get** /api/v1/requests/upcoming | Your GET endpoint
+[**user_lookup_access_rule**](#user_lookup_access_rule) | **get** /api/v1/access-rules/lookup | Lookup an access rule based on the target
 [**user_update_favorite**](#user_update_favorite) | **put** /api/v1/favorites/{id} | 
 
 # **admin_archive_access_rule**
@@ -487,141 +487,6 @@ Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ProviderSetup**](../../models/ProviderSetup.md) |  | 
 
-
-### Authorization
-
-No authorization required
-
-[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
-
-# **user_access_rule_lookup**
-<a name="user_access_rule_lookup"></a>
-> [LookupAccessRule] user_access_rule_lookup()
-
-Lookup an access rule based on the target
-
-Endpoint returns an array of relevant access rules (used in combination with granted cli)
-
-### Example
-
-```python
-import commonfate
-from commonfate.apis.tags import default_api
-from commonfate.model.lookup_access_rule import LookupAccessRule
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:8080
-# See configuration.py for a list of all supported configuration parameters.
-configuration = commonfate.Configuration(
-    host = "http://localhost:8080"
-)
-
-# Enter a context with an instance of the API client
-with commonfate.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-
-    # example passing only optional values
-    query_params = {
-        'type': "commonfate/aws-sso",
-        'permissionSetArn.label': "permissionSetArn.label_example",
-        'accountId': "accountId_example",
-    }
-    try:
-        # Lookup an access rule based on the target
-        api_response = api_instance.user_access_rule_lookup(
-            query_params=query_params,
-        )
-        pprint(api_response)
-    except commonfate.ApiException as e:
-        print("Exception when calling DefaultApi->user_access_rule_lookup: %s\n" % e)
-```
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-query_params | RequestQueryParams | |
-accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
-stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
-timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
-skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
-
-### query_params
-#### RequestQueryParams
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-type | TypeSchema | | optional
-permissionSetArn.label | PermissionSetArnLabelSchema | | optional
-accountId | AccountIdSchema | | optional
-
-
-# TypeSchema
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-str,  | str,  |  | must be one of ["commonfate/aws-sso", ] 
-
-# PermissionSetArnLabelSchema
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-str,  | str,  |  | 
-
-# AccountIdSchema
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-str,  | str,  |  | 
-
-### Return Types, Responses
-
-Code | Class | Description
-------------- | ------------- | -------------
-n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-200 | [ApiResponseFor200](#user_access_rule_lookup.ApiResponseFor200) | OK
-404 | [ApiResponseFor404](#user_access_rule_lookup.ApiResponseFor404) | An error returned from the service.
-
-#### user_access_rule_lookup.ApiResponseFor200
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor200ResponseBodyApplicationJson
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-list, tuple,  | tuple,  |  | 
-
-### Tuple Items
-Class Name | Input Type | Accessed Type | Description | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-[**LookupAccessRule**]({{complexTypePrefix}}LookupAccessRule.md) | [**LookupAccessRule**]({{complexTypePrefix}}LookupAccessRule.md) | [**LookupAccessRule**]({{complexTypePrefix}}LookupAccessRule.md) |  | 
-
-#### user_access_rule_lookup.ApiResponseFor404
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor404ResponseBodyApplicationJson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor404ResponseBodyApplicationJson
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**error** | str,  | str,  |  | 
-**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 ### Authorization
 
@@ -1308,6 +1173,141 @@ list, tuple,  | tuple,  |  |
 Class Name | Input Type | Accessed Type | Description | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 [**Request**]({{complexTypePrefix}}Request.md) | [**Request**]({{complexTypePrefix}}Request.md) | [**Request**]({{complexTypePrefix}}Request.md) |  | 
+
+### Authorization
+
+No authorization required
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
+# **user_lookup_access_rule**
+<a name="user_lookup_access_rule"></a>
+> [LookupAccessRule] user_lookup_access_rule()
+
+Lookup an access rule based on the target
+
+Endpoint returns an array of relevant access rules (used in combination with granted cli)
+
+### Example
+
+```python
+import commonfate
+from commonfate.apis.tags import default_api
+from commonfate.model.lookup_access_rule import LookupAccessRule
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = commonfate.Configuration(
+    host = "http://localhost:8080"
+)
+
+# Enter a context with an instance of the API client
+with commonfate.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = default_api.DefaultApi(api_client)
+
+    # example passing only optional values
+    query_params = {
+        'type': "commonfate/aws-sso",
+        'permissionSetArn.label': "permissionSetArn.label_example",
+        'accountId': "accountId_example",
+    }
+    try:
+        # Lookup an access rule based on the target
+        api_response = api_instance.user_lookup_access_rule(
+            query_params=query_params,
+        )
+        pprint(api_response)
+    except commonfate.ApiException as e:
+        print("Exception when calling DefaultApi->user_lookup_access_rule: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+query_params | RequestQueryParams | |
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### query_params
+#### RequestQueryParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+type | TypeSchema | | optional
+permissionSetArn.label | PermissionSetArnLabelSchema | | optional
+accountId | AccountIdSchema | | optional
+
+
+# TypeSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | must be one of ["commonfate/aws-sso", ] 
+
+# PermissionSetArnLabelSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+# AccountIdSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#user_lookup_access_rule.ApiResponseFor200) | OK
+404 | [ApiResponseFor404](#user_lookup_access_rule.ApiResponseFor404) | An error returned from the service.
+
+#### user_lookup_access_rule.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor200ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+[**LookupAccessRule**]({{complexTypePrefix}}LookupAccessRule.md) | [**LookupAccessRule**]({{complexTypePrefix}}LookupAccessRule.md) | [**LookupAccessRule**]({{complexTypePrefix}}LookupAccessRule.md) |  | 
+
+#### user_lookup_access_rule.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 ### Authorization
 

@@ -191,20 +191,20 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**admin_get_access_rule_versions**](docs/apis/tags/AdminApi.md#admin_get_access_rule_versions) | **get** /api/v1/admin/access-rules/{ruleId}/versions | Get Access Rule version history
 *AdminApi* | [**admin_get_deployment_version**](docs/apis/tags/AdminApi.md#admin_get_deployment_version) | **get** /api/v1/admin/deployment/version | Get deployment version details
 *AdminApi* | [**admin_get_group**](docs/apis/tags/AdminApi.md#admin_get_group) | **get** /api/v1/admin/groups/{groupId} | Get Group Details
+*AdminApi* | [**admin_get_identity_configuration**](docs/apis/tags/AdminApi.md#admin_get_identity_configuration) | **get** /api/v1/admin/identity | Get identity configuration
 *AdminApi* | [**admin_get_provider**](docs/apis/tags/AdminApi.md#admin_get_provider) | **get** /api/v1/admin/providers/{providerId} | List providers
 *AdminApi* | [**admin_get_provider_args**](docs/apis/tags/AdminApi.md#admin_get_provider_args) | **get** /api/v1/admin/providers/{providerId}/args | Get provider arg schema
 *AdminApi* | [**admin_get_providersetup**](docs/apis/tags/AdminApi.md#admin_get_providersetup) | **get** /api/v1/admin/providersetups/{providersetupId} | Get an in-progress provider setup
 *AdminApi* | [**admin_get_providersetup_instructions**](docs/apis/tags/AdminApi.md#admin_get_providersetup_instructions) | **get** /api/v1/admin/providersetups/{providersetupId}/instructions | Get the setup instructions for an Access Provider
-*AdminApi* | [**admin_get_users**](docs/apis/tags/AdminApi.md#admin_get_users) | **get** /api/v1/admin/users | Returns a list of users
-*AdminApi* | [**admin_identity_configuration**](docs/apis/tags/AdminApi.md#admin_identity_configuration) | **get** /api/v1/admin/identity | Get identity configuration
-*AdminApi* | [**admin_identity_sync**](docs/apis/tags/AdminApi.md#admin_identity_sync) | **post** /api/v1/admin/identity/sync | Sync Identity
 *AdminApi* | [**admin_list_access_rules**](docs/apis/tags/AdminApi.md#admin_list_access_rules) | **get** /api/v1/admin/access-rules | List Access Rules
 *AdminApi* | [**admin_list_groups**](docs/apis/tags/AdminApi.md#admin_list_groups) | **get** /api/v1/admin/groups | List groups
 *AdminApi* | [**admin_list_provider_arg_options**](docs/apis/tags/AdminApi.md#admin_list_provider_arg_options) | **get** /api/v1/admin/providers/{providerId}/args/{argId}/options | List provider arg options
 *AdminApi* | [**admin_list_providers**](docs/apis/tags/AdminApi.md#admin_list_providers) | **get** /api/v1/admin/providers | List providers
 *AdminApi* | [**admin_list_providersetups**](docs/apis/tags/AdminApi.md#admin_list_providersetups) | **get** /api/v1/admin/providersetups | List the provider setups in progress
 *AdminApi* | [**admin_list_requests**](docs/apis/tags/AdminApi.md#admin_list_requests) | **get** /api/v1/admin/requests | Your GET endpoint
+*AdminApi* | [**admin_list_users**](docs/apis/tags/AdminApi.md#admin_list_users) | **get** /api/v1/admin/users | Returns a list of users
 *AdminApi* | [**admin_submit_providersetup_step**](docs/apis/tags/AdminApi.md#admin_submit_providersetup_step) | **put** /api/v1/admin/providersetups/{providersetupId}/steps/{stepIndex}/complete | Update the completion status for a Provider setup step
+*AdminApi* | [**admin_sync_identity**](docs/apis/tags/AdminApi.md#admin_sync_identity) | **post** /api/v1/admin/identity/sync | Sync Identity
 *AdminApi* | [**admin_update_access_rule**](docs/apis/tags/AdminApi.md#admin_update_access_rule) | **put** /api/v1/admin/access-rules/{ruleId} | Update Access Rule
 *AdminApi* | [**admin_update_group**](docs/apis/tags/AdminApi.md#admin_update_group) | **put** /api/v1/admin/groups/{groupId} | Update Group
 *AdminApi* | [**admin_update_user**](docs/apis/tags/AdminApi.md#admin_update_user) | **post** /api/v1/admin/users/{userId} | Update User
@@ -228,13 +228,13 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**admin_create_providersetup**](docs/apis/tags/DefaultApi.md#admin_create_providersetup) | **post** /api/v1/admin/providersetups | Begin the setup process for a new Access Provider
 *DefaultApi* | [**admin_delete_group**](docs/apis/tags/DefaultApi.md#admin_delete_group) | **delete** /api/v1/admin/groups/{groupId} | Delete Group
 *DefaultApi* | [**admin_delete_providersetup**](docs/apis/tags/DefaultApi.md#admin_delete_providersetup) | **delete** /api/v1/admin/providersetups/{providersetupId} | Delete an in-progress provider setup
-*DefaultApi* | [**user_access_rule_lookup**](docs/apis/tags/DefaultApi.md#user_access_rule_lookup) | **get** /api/v1/access-rules/lookup | Lookup an access rule based on the target
 *DefaultApi* | [**user_create_favorite**](docs/apis/tags/DefaultApi.md#user_create_favorite) | **post** /api/v1/favorites | Create Favorite
 *DefaultApi* | [**user_delete_favorite**](docs/apis/tags/DefaultApi.md#user_delete_favorite) | **delete** /api/v1/favorites/{id} | 
 *DefaultApi* | [**user_get_favorite**](docs/apis/tags/DefaultApi.md#user_get_favorite) | **get** /api/v1/favorites/{id} | Get Favorite
 *DefaultApi* | [**user_list_favorites**](docs/apis/tags/DefaultApi.md#user_list_favorites) | **get** /api/v1/favorites | ListFavorites
 *DefaultApi* | [**user_list_requests_past**](docs/apis/tags/DefaultApi.md#user_list_requests_past) | **get** /api/v1/requests/past | Your GET endpoint
 *DefaultApi* | [**user_list_requests_upcoming**](docs/apis/tags/DefaultApi.md#user_list_requests_upcoming) | **get** /api/v1/requests/upcoming | Your GET endpoint
+*DefaultApi* | [**user_lookup_access_rule**](docs/apis/tags/DefaultApi.md#user_lookup_access_rule) | **get** /api/v1/access-rules/lookup | Lookup an access rule based on the target
 *DefaultApi* | [**user_update_favorite**](docs/apis/tags/DefaultApi.md#user_update_favorite) | **put** /api/v1/favorites/{id} | 
 
 ## Documentation For Models

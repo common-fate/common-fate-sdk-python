@@ -202,7 +202,7 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _user_access_rule_lookup_oapg(
+    def _user_lookup_access_rule_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -214,7 +214,7 @@ class BaseApi(api_client.Api):
     ]: ...
 
     @typing.overload
-    def _user_access_rule_lookup_oapg(
+    def _user_lookup_access_rule_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
@@ -224,7 +224,7 @@ class BaseApi(api_client.Api):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _user_access_rule_lookup_oapg(
+    def _user_lookup_access_rule_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -236,7 +236,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _user_access_rule_lookup_oapg(
+    def _user_lookup_access_rule_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -297,11 +297,11 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class UserAccessRuleLookup(BaseApi):
+class UserLookupAccessRule(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def user_access_rule_lookup(
+    def user_lookup_access_rule(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -313,7 +313,7 @@ class UserAccessRuleLookup(BaseApi):
     ]: ...
 
     @typing.overload
-    def user_access_rule_lookup(
+    def user_lookup_access_rule(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
@@ -323,7 +323,7 @@ class UserAccessRuleLookup(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def user_access_rule_lookup(
+    def user_lookup_access_rule(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -335,7 +335,7 @@ class UserAccessRuleLookup(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def user_access_rule_lookup(
+    def user_lookup_access_rule(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -343,7 +343,7 @@ class UserAccessRuleLookup(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._user_access_rule_lookup_oapg(
+        return self._user_lookup_access_rule_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
             stream=stream,
@@ -398,7 +398,7 @@ class ApiForget(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._user_access_rule_lookup_oapg(
+        return self._user_lookup_access_rule_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
             stream=stream,
