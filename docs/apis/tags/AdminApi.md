@@ -5,10 +5,14 @@ All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**admin_archive_access_rule**](#admin_archive_access_rule) | **post** /api/v1/admin/access-rules/{ruleId}/archive | Archive Access Rule
 [**admin_complete_providersetup**](#admin_complete_providersetup) | **post** /api/v1/admin/providersetups/{providersetupId}/complete | Complete a ProviderSetup
 [**admin_create_access_rule**](#admin_create_access_rule) | **post** /api/v1/admin/access-rules | Create Access Rule
 [**admin_create_group**](#admin_create_group) | **post** /api/v1/admin/groups | Create Group
+[**admin_create_providersetup**](#admin_create_providersetup) | **post** /api/v1/admin/providersetups | Begin the setup process for a new Access Provider
 [**admin_create_user**](#admin_create_user) | **post** /api/v1/admin/users | Create User
+[**admin_delete_group**](#admin_delete_group) | **delete** /api/v1/admin/groups/{groupId} | Delete Group
+[**admin_delete_providersetup**](#admin_delete_providersetup) | **delete** /api/v1/admin/providersetups/{providersetupId} | Delete an in-progress provider setup
 [**admin_get_access_rule**](#admin_get_access_rule) | **get** /api/v1/admin/access-rules/{ruleId} | Get Access Rule
 [**admin_get_access_rule_version**](#admin_get_access_rule_version) | **get** /api/v1/admin/access-rules/{ruleId}/versions/{version} | Get Access Rule Version
 [**admin_get_access_rule_versions**](#admin_get_access_rule_versions) | **get** /api/v1/admin/access-rules/{ruleId}/versions | Get Access Rule version history
@@ -32,6 +36,158 @@ Method | HTTP request | Description
 [**admin_update_group**](#admin_update_group) | **put** /api/v1/admin/groups/{groupId} | Update Group
 [**admin_update_user**](#admin_update_user) | **post** /api/v1/admin/users/{userId} | Update User
 [**admin_validate_providersetup**](#admin_validate_providersetup) | **post** /api/v1/admin/providersetups/{providersetupId}/validate | Validate the configuration for a Provider Setup
+
+# **admin_archive_access_rule**
+<a name="admin_archive_access_rule"></a>
+> AccessRuleDetail admin_archive_access_rule(rule_id)
+
+Archive Access Rule
+
+Marks an access rule as archived. Any pending requests for this access rule will be cancelled.
+
+### Example
+
+```python
+import commonfate
+from commonfate.apis.tags import admin_api
+from commonfate.model.access_rule_detail import AccessRuleDetail
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = commonfate.Configuration(
+    host = "http://localhost:8080"
+)
+
+# Enter a context with an instance of the API client
+with commonfate.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = admin_api.AdminApi(api_client)
+
+    # example passing only required values which don't have defaults set
+    path_params = {
+        'ruleId': "ruleId_example",
+    }
+    try:
+        # Archive Access Rule
+        api_response = api_instance.admin_archive_access_rule(
+            path_params=path_params,
+        )
+        pprint(api_response)
+    except commonfate.ApiException as e:
+        print("Exception when calling AdminApi->admin_archive_access_rule: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+path_params | RequestPathParams | |
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### path_params
+#### RequestPathParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ruleId | RuleIdSchema | | 
+
+# RuleIdSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#admin_archive_access_rule.ApiResponseFor200) | OK
+401 | [ApiResponseFor401](#admin_archive_access_rule.ApiResponseFor401) | An error returned from the service.
+404 | [ApiResponseFor404](#admin_archive_access_rule.ApiResponseFor404) | An error returned from the service.
+500 | [ApiResponseFor500](#admin_archive_access_rule.ApiResponseFor500) | An error returned from the service.
+
+#### admin_archive_access_rule.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor200ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**AccessRuleDetail**](../../models/AccessRuleDetail.md) |  | 
+
+
+#### admin_archive_access_rule.ApiResponseFor401
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor401ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor401ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+#### admin_archive_access_rule.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+#### admin_archive_access_rule.ApiResponseFor500
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor500ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+### Authorization
+
+No authorization required
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **admin_complete_providersetup**
 <a name="admin_complete_providersetup"></a>
@@ -481,6 +637,118 @@ No authorization required
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
+# **admin_create_providersetup**
+<a name="admin_create_providersetup"></a>
+> ProviderSetup admin_create_providersetup()
+
+Begin the setup process for a new Access Provider
+
+Begins the guided setup process for a new Access Provider.
+
+### Example
+
+```python
+import commonfate
+from commonfate.apis.tags import admin_api
+from commonfate.model.provider_setup import ProviderSetup
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = commonfate.Configuration(
+    host = "http://localhost:8080"
+)
+
+# Enter a context with an instance of the API client
+with commonfate.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = admin_api.AdminApi(api_client)
+
+    # example passing only optional values
+    body = dict(
+        provider_type="6",
+    )
+    try:
+        # Begin the setup process for a new Access Provider
+        api_response = api_instance.admin_create_providersetup(
+            body=body,
+        )
+        pprint(api_response)
+    except commonfate.ApiException as e:
+        print("Exception when calling AdminApi->admin_create_providersetup: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+body | typing.Union[SchemaForRequestBodyApplicationJson, Unset] | optional, default is unset |
+content_type | str | optional, default is 'application/json' | Selects the schema and serialization of the request body
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### body
+
+# SchemaForRequestBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**providerType** | str,  | str,  | The type of the provider to set up. | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+201 | [ApiResponseFor201](#admin_create_providersetup.ApiResponseFor201) | Returns a ProviderSetup object.
+400 | [ApiResponseFor400](#admin_create_providersetup.ApiResponseFor400) | An error returned from the service.
+
+#### admin_create_providersetup.ApiResponseFor201
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor201ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor201ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ProviderSetup**](../../models/ProviderSetup.md) |  | 
+
+
+#### admin_create_providersetup.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor400ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor400ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+### Authorization
+
+No authorization required
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
 # **admin_create_user**
 <a name="admin_create_user"></a>
 > User admin_create_user()
@@ -634,6 +902,218 @@ Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **error** | str,  | str,  |  | 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+### Authorization
+
+No authorization required
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
+# **admin_delete_group**
+<a name="admin_delete_group"></a>
+> admin_delete_group(group_id)
+
+Delete Group
+
+Delete an internal group
+
+### Example
+
+```python
+import commonfate
+from commonfate.apis.tags import admin_api
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = commonfate.Configuration(
+    host = "http://localhost:8080"
+)
+
+# Enter a context with an instance of the API client
+with commonfate.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = admin_api.AdminApi(api_client)
+
+    # example passing only required values which don't have defaults set
+    path_params = {
+        'groupId': "groupId_example",
+    }
+    try:
+        # Delete Group
+        api_response = api_instance.admin_delete_group(
+            path_params=path_params,
+        )
+    except commonfate.ApiException as e:
+        print("Exception when calling AdminApi->admin_delete_group: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+path_params | RequestPathParams | |
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### path_params
+#### RequestPathParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+groupId | GroupIdSchema | | 
+
+# GroupIdSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#admin_delete_group.ApiResponseFor200) | OK
+404 | [ApiResponseFor404](#admin_delete_group.ApiResponseFor404) | An error returned from the service.
+500 | [ApiResponseFor500](#admin_delete_group.ApiResponseFor500) | An error returned from the service.
+
+#### admin_delete_group.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### admin_delete_group.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+#### admin_delete_group.ApiResponseFor500
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor500ResponseBodyApplicationJson
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**error** | str,  | str,  |  | 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+### Authorization
+
+No authorization required
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
+# **admin_delete_providersetup**
+<a name="admin_delete_providersetup"></a>
+> ProviderSetup admin_delete_providersetup(providersetup_id)
+
+Delete an in-progress provider setup
+
+Removes an in-progress provider setup and deletes all data relating to it.  Returns the deleted provider.
+
+### Example
+
+```python
+import commonfate
+from commonfate.apis.tags import admin_api
+from commonfate.model.provider_setup import ProviderSetup
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost:8080
+# See configuration.py for a list of all supported configuration parameters.
+configuration = commonfate.Configuration(
+    host = "http://localhost:8080"
+)
+
+# Enter a context with an instance of the API client
+with commonfate.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = admin_api.AdminApi(api_client)
+
+    # example passing only required values which don't have defaults set
+    path_params = {
+        'providersetupId': "providersetupId_example",
+    }
+    try:
+        # Delete an in-progress provider setup
+        api_response = api_instance.admin_delete_providersetup(
+            path_params=path_params,
+        )
+        pprint(api_response)
+    except commonfate.ApiException as e:
+        print("Exception when calling AdminApi->admin_delete_providersetup: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+path_params | RequestPathParams | |
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### path_params
+#### RequestPathParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+providersetupId | ProvidersetupIdSchema | | 
+
+# ProvidersetupIdSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#admin_delete_providersetup.ApiResponseFor200) | Returns a ProviderSetup object.
+
+#### admin_delete_providersetup.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor200ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ProviderSetup**](../../models/ProviderSetup.md) |  | 
+
 
 ### Authorization
 

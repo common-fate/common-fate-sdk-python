@@ -6,7 +6,6 @@ commonfate/__init__.py
 commonfate/api_client.py
 commonfate/apis/__init__.py
 commonfate/apis/tags/admin_api.py
-commonfate/apis/tags/default_api.py
 commonfate/apis/tags/end_user_api.py
 commonfate/configuration.py
 commonfate/exceptions.py
@@ -115,7 +114,6 @@ commonfate/models/__init__.py
 commonfate/rest.py
 commonfate/schemas.py
 docs/apis/tags/AdminApi.md
-docs/apis/tags/DefaultApi.md
 docs/apis/tags/EndUserApi.md
 docs/models/AccessInstructions.md
 docs/models/AccessRule.md
