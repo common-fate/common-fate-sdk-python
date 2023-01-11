@@ -409,7 +409,7 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _create_group_oapg(
+    def _admin_create_group_oapg(
         self,
         content_type: typing_extensions.Literal["application/json"] = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -422,7 +422,7 @@ class BaseApi(api_client.Api):
     ]: ...
 
     @typing.overload
-    def _create_group_oapg(
+    def _admin_create_group_oapg(
         self,
         content_type: str = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -436,7 +436,7 @@ class BaseApi(api_client.Api):
 
 
     @typing.overload
-    def _create_group_oapg(
+    def _admin_create_group_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
@@ -447,7 +447,7 @@ class BaseApi(api_client.Api):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _create_group_oapg(
+    def _admin_create_group_oapg(
         self,
         content_type: str = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -460,7 +460,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _create_group_oapg(
+    def _admin_create_group_oapg(
         self,
         content_type: str = 'application/json',
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -517,11 +517,11 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class CreateGroup(BaseApi):
+class AdminCreateGroup(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def create_group(
+    def admin_create_group(
         self,
         content_type: typing_extensions.Literal["application/json"] = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -534,7 +534,7 @@ class CreateGroup(BaseApi):
     ]: ...
 
     @typing.overload
-    def create_group(
+    def admin_create_group(
         self,
         content_type: str = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -548,7 +548,7 @@ class CreateGroup(BaseApi):
 
 
     @typing.overload
-    def create_group(
+    def admin_create_group(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
@@ -559,7 +559,7 @@ class CreateGroup(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def create_group(
+    def admin_create_group(
         self,
         content_type: str = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -572,7 +572,7 @@ class CreateGroup(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def create_group(
+    def admin_create_group(
         self,
         content_type: str = 'application/json',
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -581,7 +581,7 @@ class CreateGroup(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._create_group_oapg(
+        return self._admin_create_group_oapg(
             body=body,
             content_type=content_type,
             accept_content_types=accept_content_types,
@@ -655,7 +655,7 @@ class ApiForpost(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._create_group_oapg(
+        return self._admin_create_group_oapg(
             body=body,
             content_type=content_type,
             accept_content_types=accept_content_types,

@@ -8,3 +8,4 @@ import enum
 class TagValues(str, enum.Enum):
     END_USER = "End User"
     ADMIN = "Admin"
+    DEFAULT = "default"

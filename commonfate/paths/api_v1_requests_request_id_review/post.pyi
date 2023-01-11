@@ -228,7 +228,7 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _review_request_oapg(
+    def _user_review_request_oapg(
         self,
         content_type: typing_extensions.Literal["application/json"] = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -242,7 +242,7 @@ class BaseApi(api_client.Api):
     ]: ...
 
     @typing.overload
-    def _review_request_oapg(
+    def _user_review_request_oapg(
         self,
         content_type: str = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -257,7 +257,7 @@ class BaseApi(api_client.Api):
 
 
     @typing.overload
-    def _review_request_oapg(
+    def _user_review_request_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
@@ -269,7 +269,7 @@ class BaseApi(api_client.Api):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _review_request_oapg(
+    def _user_review_request_oapg(
         self,
         content_type: str = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -283,7 +283,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _review_request_oapg(
+    def _user_review_request_oapg(
         self,
         content_type: str = 'application/json',
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -355,11 +355,11 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class ReviewRequest(BaseApi):
+class UserReviewRequest(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def review_request(
+    def user_review_request(
         self,
         content_type: typing_extensions.Literal["application/json"] = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -373,7 +373,7 @@ class ReviewRequest(BaseApi):
     ]: ...
 
     @typing.overload
-    def review_request(
+    def user_review_request(
         self,
         content_type: str = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -388,7 +388,7 @@ class ReviewRequest(BaseApi):
 
 
     @typing.overload
-    def review_request(
+    def user_review_request(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
@@ -400,7 +400,7 @@ class ReviewRequest(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def review_request(
+    def user_review_request(
         self,
         content_type: str = ...,
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -414,7 +414,7 @@ class ReviewRequest(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def review_request(
+    def user_review_request(
         self,
         content_type: str = 'application/json',
         body: typing.Union[SchemaForRequestBodyApplicationJson, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
@@ -424,7 +424,7 @@ class ReviewRequest(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._review_request_oapg(
+        return self._user_review_request_oapg(
             body=body,
             path_params=path_params,
             content_type=content_type,
@@ -504,7 +504,7 @@ class ApiForpost(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._review_request_oapg(
+        return self._user_review_request_oapg(
             body=body,
             path_params=path_params,
             content_type=content_type,
