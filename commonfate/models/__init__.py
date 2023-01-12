@@ -42,10 +42,13 @@ from commonfate.model.option import Option
 from commonfate.model.provider import Provider
 from commonfate.model.provider_config_field import ProviderConfigField
 from commonfate.model.provider_config_validation import ProviderConfigValidation
+from commonfate.model.provider_config_value import ProviderConfigValue
 from commonfate.model.provider_setup import ProviderSetup
+from commonfate.model.provider_setup_diagnostic_log import ProviderSetupDiagnosticLog
 from commonfate.model.provider_setup_instructions import ProviderSetupInstructions
 from commonfate.model.provider_setup_step_details import ProviderSetupStepDetails
 from commonfate.model.provider_setup_step_overview import ProviderSetupStepOverview
+from commonfate.model.provider_setup_validation import ProviderSetupValidation
 from commonfate.model.request import Request
 from commonfate.model.request_access_rule import RequestAccessRule
 from commonfate.model.request_access_rule_target import RequestAccessRuleTarget

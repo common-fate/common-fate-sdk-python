@@ -10,70 +10,70 @@
 """
 
 from commonfate.paths.api_v1_admin_access_rules_rule_id_archive.post import AdminArchiveAccessRule
+from commonfate.paths.api_v1_admin_providersetups_providersetup_id_complete.post import AdminCompleteProvidersetup
 from commonfate.paths.api_v1_admin_access_rules.post import AdminCreateAccessRule
+from commonfate.paths.api_v1_admin_groups.post import AdminCreateGroup
+from commonfate.paths.api_v1_admin_providersetups.post import AdminCreateProvidersetup
+from commonfate.paths.api_v1_admin_users.post import AdminCreateUser
 from commonfate.paths.api_v1_admin_groups_group_id.delete import AdminDeleteGroup
+from commonfate.paths.api_v1_admin_providersetups_providersetup_id.delete import AdminDeleteProvidersetup
 from commonfate.paths.api_v1_admin_access_rules_rule_id.get import AdminGetAccessRule
 from commonfate.paths.api_v1_admin_access_rules_rule_id_versions_version.get import AdminGetAccessRuleVersion
 from commonfate.paths.api_v1_admin_access_rules_rule_id_versions.get import AdminGetAccessRuleVersions
 from commonfate.paths.api_v1_admin_deployment_version.get import AdminGetDeploymentVersion
+from commonfate.paths.api_v1_admin_groups_group_id.get import AdminGetGroup
+from commonfate.paths.api_v1_admin_identity.get import AdminGetIdentityConfiguration
+from commonfate.paths.api_v1_admin_providers_provider_id.get import AdminGetProvider
+from commonfate.paths.api_v1_admin_providers_provider_id_args.get import AdminGetProviderArgs
+from commonfate.paths.api_v1_admin_providersetups_providersetup_id.get import AdminGetProvidersetup
+from commonfate.paths.api_v1_admin_providersetups_providersetup_id_instructions.get import AdminGetProvidersetupInstructions
 from commonfate.paths.api_v1_admin_access_rules.get import AdminListAccessRules
+from commonfate.paths.api_v1_admin_groups.get import AdminListGroups
+from commonfate.paths.api_v1_admin_providers_provider_id_args_arg_id_options.get import AdminListProviderArgOptions
+from commonfate.paths.api_v1_admin_providers.get import AdminListProviders
+from commonfate.paths.api_v1_admin_providersetups.get import AdminListProvidersetups
 from commonfate.paths.api_v1_admin_requests.get import AdminListRequests
+from commonfate.paths.api_v1_admin_users.get import AdminListUsers
+from commonfate.paths.api_v1_admin_providersetups_providersetup_id_steps_step_index_complete.put import AdminSubmitProvidersetupStep
+from commonfate.paths.api_v1_admin_identity_sync.post import AdminSyncIdentity
 from commonfate.paths.api_v1_admin_access_rules_rule_id.put import AdminUpdateAccessRule
 from commonfate.paths.api_v1_admin_groups_group_id.put import AdminUpdateGroup
-from commonfate.paths.api_v1_admin_providersetups_providersetup_id_complete.post import CompleteProvidersetup
-from commonfate.paths.api_v1_admin_groups.post import CreateGroup
-from commonfate.paths.api_v1_admin_providersetups.post import CreateProvidersetup
-from commonfate.paths.api_v1_admin_users.post import CreateUser
-from commonfate.paths.api_v1_admin_providersetups_providersetup_id.delete import DeleteProvidersetup
-from commonfate.paths.api_v1_admin_groups_group_id.get import GetGroup
-from commonfate.paths.api_v1_admin_providers_provider_id.get import GetProvider
-from commonfate.paths.api_v1_admin_providers_provider_id_args.get import GetProviderArgs
-from commonfate.paths.api_v1_admin_providersetups_providersetup_id.get import GetProvidersetup
-from commonfate.paths.api_v1_admin_providersetups_providersetup_id_instructions.get import GetProvidersetupInstructions
-from commonfate.paths.api_v1_admin_users.get import GetUsers
-from commonfate.paths.api_v1_admin_identity.get import IdentityConfiguration
-from commonfate.paths.api_v1_admin_identity_sync.post import IdentitySync
-from commonfate.paths.api_v1_admin_groups.get import ListGroups
-from commonfate.paths.api_v1_admin_providers_provider_id_args_arg_id_options.get import ListProviderArgOptions
-from commonfate.paths.api_v1_admin_providers.get import ListProviders
-from commonfate.paths.api_v1_admin_providersetups.get import ListProvidersetups
-from commonfate.paths.api_v1_admin_providersetups_providersetup_id_steps_step_index_complete.put import SubmitProvidersetupStep
-from commonfate.paths.api_v1_admin_users_user_id.post import UpdateUser
-from commonfate.paths.api_v1_admin_providersetups_providersetup_id_validate.post import ValidateProvidersetup
+from commonfate.paths.api_v1_admin_users_user_id.post import AdminUpdateUser
+from commonfate.paths.api_v1_admin_providersetups_providersetup_id_validate.post import AdminValidateProvidersetup
 
 
 class AdminApi(
     AdminArchiveAccessRule,
+    AdminCompleteProvidersetup,
     AdminCreateAccessRule,
+    AdminCreateGroup,
+    AdminCreateProvidersetup,
+    AdminCreateUser,
     AdminDeleteGroup,
+    AdminDeleteProvidersetup,
     AdminGetAccessRule,
     AdminGetAccessRuleVersion,
     AdminGetAccessRuleVersions,
     AdminGetDeploymentVersion,
+    AdminGetGroup,
+    AdminGetIdentityConfiguration,
+    AdminGetProvider,
+    AdminGetProviderArgs,
+    AdminGetProvidersetup,
+    AdminGetProvidersetupInstructions,
     AdminListAccessRules,
+    AdminListGroups,
+    AdminListProviderArgOptions,
+    AdminListProviders,
+    AdminListProvidersetups,
     AdminListRequests,
+    AdminListUsers,
+    AdminSubmitProvidersetupStep,
+    AdminSyncIdentity,
     AdminUpdateAccessRule,
     AdminUpdateGroup,
-    CompleteProvidersetup,
-    CreateGroup,
-    CreateProvidersetup,
-    CreateUser,
-    DeleteProvidersetup,
-    GetGroup,
-    GetProvider,
-    GetProviderArgs,
-    GetProvidersetup,
-    GetProvidersetupInstructions,
-    GetUsers,
-    IdentityConfiguration,
-    IdentitySync,
-    ListGroups,
-    ListProviderArgOptions,
-    ListProviders,
-    ListProvidersetups,
-    SubmitProvidersetupStep,
-    UpdateUser,
-    ValidateProvidersetup,
+    AdminUpdateUser,
+    AdminValidateProvidersetup,
 ):
     """NOTE: This class is auto generated by OpenAPI Generator
     Ref: https://openapi-generator.tech
